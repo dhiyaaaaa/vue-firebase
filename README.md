@@ -2,32 +2,42 @@ Nama: Dhiya Ulhaq Ayyuasy
 NIM: H1D021040
 
 Praktikum Pemrograman Mobile
-Vue-Firebase CRUD Ionic
+Vue-Firebase 
 
-CRUD
+![Login](view.png)
+![Login Google](login.png)
+Langkah-Langkah Proses Login
+1. Inisialisasi GoogleAuth:
+Plugin Capacitor GoogleAuth diinisialisasi dengan parameter seperti clientId, scopes, dan grantOfflineAccess.
 
-![Home](img/1home.png)
-Halaman Home akan tampil setelah pengguna berhasil melakukan login 
-Halaman home menampilkan todo list dan task yang complete. Karena belum ada task yang ditambahkan maka halaman menampilkan no active todos dan belm ada task yang complete
-![Add](img/add.png)
-![Success Add](img/add2.png)
-Halaman add akan menampillkan form sederhana yang mengharuskan user menginputkan tittle dan description
-jika sudah mengisi maka bisa melakukan klik pada button add todo
-jika berhasil maka akan tampil pada todo list dan muncul alert Todo added successfully
-![Edit](img/edit.png)
-![Success Edit](img/edit1.png)
-Halaman edit akan menampillkan form sederhana yang mengharuskan user mengedit tittle dan description jika pada todolist diswipe ke kanan dan melekukan klik pada icon edit
-jika sudah mengisi maka bisa melakukan klik pada button edit todo
-jika berhasil maka akan tampil pada todo list  dan muncul alert Todo Update successfully
-![Delete](img/deletetodo.png)
-![Success Delete](img/sccsdelete.png)
-Pada saat menampilkan halaman todo list diswipe ke kanan maka akan muncul button untuk menghapus
-Klik button hapus 
-jika berhasil maka akan menampilkan alert Todo Delete successfully
-![Complete](img/completed.png)
-![Success Complete](img/successcompleted.png)
-Pada saat menampilkan halaman todo list diswipe ke kiri maka akan muncul button untuk menceklis jika task sudah selesai
-Klik button ceklis 
-jika berhasil maka akan menampilkan alert Todo mark as completed
+2. Google Sign-In:
+Menggunakan GoogleAuth.signIn() untuk meminta pengguna login melalui Google.
+
+3. Ambil ID Token:
+Token yang diterima dari Google digunakan untuk mengautentikasi pengguna di Firebase.
+
+4. Firebase Credential:
+GoogleAuthProvider.credential digunakan untuk membuat credential Firebase dari ID Token.
+
+5. Autentikasi Firebase:
+signInWithCredential mengautentikasi pengguna dengan Firebase menggunakan credential Google.
+
+6. Simpan Data Pengguna:
+Data pengguna yang berhasil login disimpan ke state user.
+
+7. Navigasi ke Home:
+Setelah login berhasil, pengguna diarahkan ke halaman /home.
+
+![Login Google](home.png)
+![Login Google](profile.png)
+Halaman profie terdapat:
+Menampilkan data pengguna (nama, email, dan foto profil).
+Menyediakan tombol logout yang menghapus sesi autentikasi.
+Menampilkan menu tab navigasi melalui komponen tambahan.
 
 
+Proses logout:
+1. Sign Out Firebase: Keluar dari Firebase Authentication.
+2. Sign Out GoogleAuth: Keluar dari sesi GoogleAuth.
+3. Reset State: Set user menjadi null.
+4. Navigasi ke Login: Setelah logout, pengguna diarahkan ke halaman /login.
